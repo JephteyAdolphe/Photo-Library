@@ -3,11 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jFiles.Controllers.createUserController">
-   <children>
-      <TextField layoutX="212.0" layoutY="200.0" promptText="New User" />
-      <Button layoutX="212.0" layoutY="284.0" mnemonicParsing="false" text="Create" />
-      <Button layoutX="309.0" layoutY="284.0" mnemonicParsing="false" text="Cancel" />
-   </children>
+<AnchorPane prefHeight="100.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="jFiles.Controllers.createUserController">
+   <TextField fx:id="newUserName" layoutX="36.0" layoutY="25.0" promptText="Name of User"/>
+   <Button layoutX="36.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#createNewUser" text="Create"/>
+   <Button layoutX="133.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#cancelPrompt" text="Cancel"/>
 </AnchorPane>

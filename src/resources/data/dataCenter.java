@@ -82,6 +82,21 @@ public class dataCenter {
         }
     }
 
+    // Deletes the user's schema in the database
+
+    public void deleteUser(String libraryUser) {
+        String sql = String.format("drop schema %s", libraryUser);
+
+        try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
+            psmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Generates list of albums for the user on the main dashboard
+
     public ObservableList<String> listAlbums(String libraryUser) {
         String sql = String.format("select * from information_schema.tables where table_schema = '%s'", libraryUser);
         ObservableList<String> observableAlbums = FXCollections.observableArrayList();
@@ -92,6 +107,29 @@ public class dataCenter {
 
             while (rs.next()) {
                 observableAlbums.add(rs.getString(3));
+            } return observableAlbums;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    // Generates list of users in the admin dashboard
+
+    public ObservableList<String> listUsers() {
+        String sql = "select s.nspname as table_schema, s.oid as schema_id, u.usename as owner from pg_catalog.pg_namespace s join pg_catalog.pg_user u on " +
+                "u.usesysid = s.nspowner where nspname not in ('information_schema', 'pg_catalog', 'public') and nspname not like 'pg_toast%' and nspname not " +
+                "like 'pg_temp_%' order by table_schema";
+
+        ObservableList<String> observableAlbums = FXCollections.observableArrayList();
+
+        try (Connection conn = connect()) {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                observableAlbums.add(rs.getString(1));
             } return observableAlbums;
 
         } catch (SQLException e) {
@@ -112,5 +150,12 @@ public class dataCenter {
     public void clear() throws FileNotFoundException {
         PrintWriter writer = new PrintWriter(file);
         writer.close();
+    }
+
+    // Returns the user that the admin wants to remove
+
+    public String getUserToDelete() throws FileNotFoundException {
+        Scanner scan = new Scanner(new File("src/resources/data/userToDelete.txt"));
+        return scan.nextLine();
     }
 }

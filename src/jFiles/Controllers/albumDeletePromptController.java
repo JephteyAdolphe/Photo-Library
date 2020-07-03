@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class albumDeletePromptController {
     public TextField albumNameToDelete;
-    dataCenter data = new dataCenter();
+    private dataCenter data = new dataCenter();
 
     // Deletes an existing album
 

@@ -1,28 +1,37 @@
 package jFiles.Controllers;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import resources.data.dataCenter;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class createUserController {
-    public TextField newUserName;
+public class userDeletePromptController implements Initializable {
+    public Label userToDelete;
+    public TextField typedUserToDelete;
     private dataCenter data = new dataCenter();
 
-    // creates new user then returns back to admin dashboard
+    public void setUserLabel() throws FileNotFoundException {
+        userToDelete.setText(data.getUserToDelete());
+    }
 
-    public void createNewUser(MouseEvent mouseEvent) {
-        try {
-            if (!newUserName.getText().trim().equals("")) {
-                String newUser = newUserName.getText().trim().replace(" ", "_");
-                data.createNewUser(newUser);
+    // Confirms the deletion of a user in the database then returns to admin dashboard
+
+    public void confirmDeletion(MouseEvent mouseEvent) throws IOException {
+        if (!typedUserToDelete.getText().trim().equals("")) {
+            if (typedUserToDelete.getText().trim().replace(" ", "_").equals(userToDelete.getText())) {
+                data.deleteUser(userToDelete.getText());
 
                 Parent adminDashRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/adminDash.fxml")));
                 Scene dashboard = new Scene(adminDashRoot);
@@ -31,13 +40,10 @@ public class createUserController {
                 adminDash.setScene(dashboard);
                 adminDash.show();
             }
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
     }
 
-    // takes the admin back to their dash without creating a new user
+    // takes the admin back to their dash without deleting user
 
     public void cancelPrompt(MouseEvent mouseEvent) throws IOException {
         Parent adminDashRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/adminDash.fxml")));
@@ -46,5 +52,14 @@ public class createUserController {
         Stage adminDash = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         adminDash.setScene(dashboard);
         adminDash.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        try {
+            setUserLabel();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
