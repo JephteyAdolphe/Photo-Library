@@ -1,15 +1,20 @@
 package resources.data;
 
-import com.sun.glass.ui.Window;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.sql.*;
+import java.util.Scanner;
 
 public class dataCenter {
     private final String url = "jdbc:postgresql://localhost:5432/photos";
     private final String user = "postgres";
     private final String password = "NorthBrunswick1685!";          // Remember to delete this when uploading to github
+
+    private File file = new File("src/resources/data/currentUser.txt");     // contains name of the user that is signed in
 
     // Method to connect to database
 
@@ -26,9 +31,35 @@ public class dataCenter {
 
     // creates the initial empty album in the database
 
-    private void createAlbumTable(String libraryUser, String albumName) {
+    public void createAlbumTable(String libraryUser, String albumName) {
         String sql = String.format("create table %s.%s (id bigserial not null primary key, " +
                 "pictures varchar(50) unique, caption varchar(50), tag varchar(50))", libraryUser, albumName);
+
+        try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
+            psmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Edits album name
+
+    public void editAlbum(String libraryUser, String oldName, String newName) {
+        String sql = String.format("alter table %s.%s rename to %s", libraryUser, oldName, newName);
+
+        try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
+            psmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Deletes album
+
+    public void deleteAlbum(String libraryUser, String albumName) {
+        String sql = String.format("drop table %s.%s", libraryUser, albumName);
 
         try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
             psmt.executeUpdate();
@@ -58,16 +89,28 @@ public class dataCenter {
         try (Connection conn = connect()) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
-            ResultSetMetaData rsmd = rs.getMetaData();
-
 
             while (rs.next()) {
                 observableAlbums.add(rs.getString(3));
-                //System.out.println(rs.getString(3));
             } return observableAlbums;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        } return null;
+            return null;
+        }
+    }
+
+    // Returns the user that is signed in
+
+    public String getUser() throws FileNotFoundException {
+        Scanner scan = new Scanner(file);
+        return scan.nextLine();
+    }
+
+    // Clears text file data
+
+    public void clear() throws FileNotFoundException {
+        PrintWriter writer = new PrintWriter(file);
+        writer.close();
     }
 }

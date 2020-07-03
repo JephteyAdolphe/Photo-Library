@@ -12,16 +12,18 @@ import resources.data.dataCenter;
 import java.io.IOException;
 import java.util.Objects;
 
-public class albumAddPromptController {
-    public TextField albumName;
+public class albumDeletePromptController {
+    public TextField albumNameToDelete;
     dataCenter data = new dataCenter();
 
-    public void addAlbum(MouseEvent mouseEvent) {
+    // Deletes an existing album
+
+    public void deleteAlbum(MouseEvent mouseEvent) {
         try {
             String user = data.getUser();
-            if (!albumName.getText().trim().equals("")) {
-                String nameOfAlbum = albumName.getText().trim().replace(" ", "_");
-                data.createAlbumTable(user, nameOfAlbum);
+            if (!albumNameToDelete.getText().trim().equals("")) {
+                String nameOfAlbum = albumNameToDelete.getText().trim().replace(" ", "_");
+                data.deleteAlbum(user, nameOfAlbum);
 
                 Parent dashRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/dashboard.fxml")));
                 Scene dashboard = new Scene(dashRoot);
@@ -36,7 +38,7 @@ public class albumAddPromptController {
         }
     }
 
-    // takes user back to dash without creating an album
+    // takes user back to dash without deleting an album
 
     public void cancelPrompt(MouseEvent mouseEvent) throws IOException {
         Parent dashRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/dashboard.fxml")));

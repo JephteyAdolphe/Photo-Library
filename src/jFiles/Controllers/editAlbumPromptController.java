@@ -12,16 +12,21 @@ import resources.data.dataCenter;
 import java.io.IOException;
 import java.util.Objects;
 
-public class albumAddPromptController {
-    public TextField albumName;
+public class editAlbumPromptController {
+    public TextField oldName;
+    public TextField newName;
+
     dataCenter data = new dataCenter();
 
-    public void addAlbum(MouseEvent mouseEvent) {
+    // Confirms the edit of an album's name
+
+    public void editAlbum(MouseEvent mouseEvent) {
         try {
             String user = data.getUser();
-            if (!albumName.getText().trim().equals("")) {
-                String nameOfAlbum = albumName.getText().trim().replace(" ", "_");
-                data.createAlbumTable(user, nameOfAlbum);
+            if (!oldName.getText().trim().equals("") && !newName.getText().trim().equals("")) {
+                String old = oldName.getText().trim().replace(" ", "_");
+                String newAlbumName = newName.getText().trim().replace(" ", "_");
+                data.editAlbum(user, old, newAlbumName);
 
                 Parent dashRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/dashboard.fxml")));
                 Scene dashboard = new Scene(dashRoot);
@@ -36,7 +41,7 @@ public class albumAddPromptController {
         }
     }
 
-    // takes user back to dash without creating an album
+    // takes user back to dash without editing an album name
 
     public void cancelPrompt(MouseEvent mouseEvent) throws IOException {
         Parent dashRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/dashboard.fxml")));

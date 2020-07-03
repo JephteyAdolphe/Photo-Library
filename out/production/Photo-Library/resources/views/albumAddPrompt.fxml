@@ -3,11 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="100.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jFiles.Controllers.albumAddPromptController">
-   <children>
-      <TextField fx:id="albumName" layoutX="36.0" layoutY="25.0" promptText="Album Name" />
-      <Button fx:id="add" layoutX="36.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#addAlbum" text="Add" />
-      <Button fx:id="cancel" layoutX="133.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#cancelPrompt" text="Cancel" />
-   </children>
+<AnchorPane prefHeight="100.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="jFiles.Controllers.albumAddPromptController">
+   <TextField fx:id="albumName" layoutX="36.0" layoutY="25.0" promptText="Album Name"/>
+   <Button layoutX="36.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#addAlbum" text="Add"/>
+   <Button layoutX="133.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#cancelPrompt" text="Cancel"/>
 </AnchorPane>
