@@ -1,0 +1,7 @@
+.list-cell {
+    -fx-cell-size: 60 ;
+}
+
+.list-cell:selected {
+    -fx-cell-size: 60 ;
+}
