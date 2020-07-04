@@ -33,7 +33,7 @@ public class dataCenter {
 
     public void createAlbumTable(String libraryUser, String albumName) {
         String sql = String.format("create table %s.%s (id bigserial not null primary key, " +
-                "pictures varchar(50) unique, caption varchar(50), tag varchar(50))", libraryUser, albumName);
+                "pictures bytea unique, caption varchar(50), tag varchar(50))", libraryUser, albumName);
 
         try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
             psmt.executeUpdate();
@@ -131,6 +131,27 @@ public class dataCenter {
             while (rs.next()) {
                 observableAlbums.add(rs.getString(1));
             } return observableAlbums;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    // Generates list of photos existing in a particular album
+
+    public ObservableList<byte[]> listPhotos(String libraryUser, String albumName) {
+        String sql = String.format("select * from %s.%s", libraryUser, albumName);
+
+        ObservableList<byte[]> observablePhotos = FXCollections.observableArrayList();
+
+        try (Connection conn = connect()) {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                observablePhotos.add(rs.getBytes(2));
+            } return observablePhotos;
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

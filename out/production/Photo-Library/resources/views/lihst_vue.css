@@ -5,3 +5,11 @@
 .list-cell:selected {
     -fx-cell-size: 60 ;
 }
+
+.image-cell {
+    -fx-cell-size: 100 ;
+}
+
+.image-cell:selected {
+    -fx-cell-size: 100 ;
+}
