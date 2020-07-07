@@ -51,7 +51,7 @@ public class dashboardController implements Initializable {
         edit_album_prompt.show();
     }
 
-    // Takes user to album deleteion prompt
+    // Takes user to album deletion prompt
 
     public void delete(MouseEvent mouseEvent) throws IOException {
         Parent deleteRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/deleteAlbumPrompt.fxml")));
@@ -79,5 +79,29 @@ public class dashboardController implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }*/
+    }
+
+    public void goToPhotos(MouseEvent mouseEvent) throws IOException {
+        String selectedAlbum = albumList.getSelectionModel().getSelectedItem();
+
+        if (selectedAlbum != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/photosInAlbum.fxml"));
+
+                Parent photoRoot = loader.load();
+
+                Scene photos = new Scene(photoRoot);
+                photosInAlbumController init = loader.getController();
+                init.chosenAlbum(selectedAlbum);
+
+                Stage listOfPhotos = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+                listOfPhotos.setScene(photos);
+                listOfPhotos.show();
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
 }

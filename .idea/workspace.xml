@@ -7,40 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07db439f-f546-4a09-839a-45617350fd50" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jeffsphotolibrary/addAlbumPrompt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/add_album_prompt.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ant.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql_42_2_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Photo-Library/jFiles/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Photo-Library/jFiles/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Photo-Library/resources/data/dataCenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Photo-Library/resources/data/dataCenter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Photo-Library/resources/views/lihst_vue.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Photo-Library/resources/views/lihst_vue.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jFiles/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jFiles/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/data/dataCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/data/dataCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/views/lihst_vue.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/lihst_vue.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jeffsphotolibrary/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jeffsphotolibrary/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jeffsphotolibrary/addAlbumPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jeffsphotolibrary/addAlbumPrompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_album_prompt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/add_album_prompt.xml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_26" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -56,13 +34,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="Jeff's_Photo_Library/invalid/Java-Gradle" />
+      <facet id="app/invalid/Android" />
+      <facet id="app/invalid/Android-Gradle" />
+    </ignored-facets>
   </component>
   <component name="ProjectId" id="1eEixO3CDjGln7QANIkKw2XHoq1" />
   <component name="ProjectLevelVcsManager">
@@ -79,14 +65,30 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/postgresql-42.2.12.jar!/" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.jeffsphotolibrary" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -145,6 +147,24 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="jFiles.Main" />
+      <module name="Photo Library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jFiles.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -172,13 +192,33 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="475" y="66" width="838" height="485" key="AndroidCreateResourceFileDialog/0.0.1463.783@0.0.1463.783" timestamp="1593898021859" />
+    <state x="590" y="205" key="AndroidCreateXmlResourceDialog" timestamp="1593909637367">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state x="590" y="205" key="AndroidCreateXmlResourceDialog/0.0.1463.783@0.0.1463.783" timestamp="1593909637367" />
+    <state width="1420" height="197" key="GridCell.Tab.0.bottom" timestamp="1593911893633">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state width="1420" height="197" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1593911893633" />
+    <state width="1420" height="197" key="GridCell.Tab.0.center" timestamp="1593911893632">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state width="1420" height="197" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1593911893632" />
+    <state width="1420" height="197" key="GridCell.Tab.0.left" timestamp="1593911893632">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state width="1420" height="197" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1593911893632" />
+    <state width="1420" height="197" key="GridCell.Tab.0.right" timestamp="1593911893632">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state width="1420" height="197" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1593911893632" />
     <state x="382" y="69" key="SettingsEditor" timestamp="1593905455785">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="382" y="69" key="SettingsEditor/0.0.1463.783@0.0.1463.783" timestamp="1593905455785" />
-    <state x="702" y="27" width="744" height="789" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1593906430720">
+    <state x="702" y="27" width="744" height="789" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1593912936409">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state x="702" y="27" width="744" height="789" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1463.783@0.0.1463.783" timestamp="1593906430720" />
+    <state x="702" y="27" width="744" height="789" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1463.783@0.0.1463.783" timestamp="1593912936409" />
   </component>
 </project>

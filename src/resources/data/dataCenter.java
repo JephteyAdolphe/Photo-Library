@@ -2,11 +2,14 @@ package resources.data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.ImageView;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class dataCenter {
@@ -33,7 +36,7 @@ public class dataCenter {
 
     public void createAlbumTable(String libraryUser, String albumName) {
         String sql = String.format("create table %s.%s (id bigserial not null primary key, " +
-                "pictures bytea unique, caption varchar(50), tag varchar(50))", libraryUser, albumName);
+                "pictures bytea, caption varchar(50), tag varchar(20), location varchar(50))", libraryUser, albumName);
 
         try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
             psmt.executeUpdate();
@@ -140,22 +143,57 @@ public class dataCenter {
 
     // Generates list of photos existing in a particular album
 
-    public ObservableList<byte[]> listPhotos(String libraryUser, String albumName) {
+    public ObservableList<ImageView> listPhotos(String libraryUser, String albumName) {
         String sql = String.format("select * from %s.%s", libraryUser, albumName);
 
-        ObservableList<byte[]> observablePhotos = FXCollections.observableArrayList();
+        ObservableList<ImageView> observablePhotos = FXCollections.observableArrayList();
 
         try (Connection conn = connect()) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
 
             while (rs.next()) {
-                observablePhotos.add(rs.getBytes(2));
+
+
+                BufferedImage img = ImageIO.read(new ByteArrayInputStream(rs.getBytes(2)));
+                ImageView iv = new ImageView();
+                iv.setImage(SwingFXUtils.toFXImage(img, null));
+                iv.setFitHeight(50);
+                iv.setFitWidth(50);
+                observablePhotos.add(iv);
+
             } return observablePhotos;
+
+        } catch (SQLException | IOException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    // Inserts byte array into album table
+
+    public void addPictureByteArray(String libraryUser, String albumName, byte[] bytea) {
+        String sql = String.format("insert into %s.%s(pictures) values(?)", libraryUser, albumName);
+
+        try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
+            psmt.setBytes(1, bytea);
+            psmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return null;
+        }
+    }
+
+    // Delete selected picture
+
+    public void deletePicture(String libraryUser, String albumName, int row) {
+        String sql = String.format("delete from %s.%s where %s.%s.id = %d", libraryUser, albumName, libraryUser, albumName, row + 1);
+
+        try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
+            psmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
