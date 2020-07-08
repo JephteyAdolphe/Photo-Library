@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jFiles.Controllers.imageDisplayController">
+<AnchorPane fx:id="backDrop" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jFiles.Controllers.imageDisplayController">
    <children>
-      <ImageView fx:id="displayImage" fitHeight="290.0" fitWidth="385.0" layoutX="108.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="74.0" layoutY="322.0" text="Caption:">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -26,5 +24,6 @@
           </font>
        </Label>
       <Label fx:id="location" layoutX="161.0" layoutY="369.0" text="Label" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goBack" text="&lt;--" />
    </children>
 </AnchorPane>

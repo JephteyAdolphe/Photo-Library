@@ -46,53 +46,16 @@ public class photosInAlbumController implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
-
-        /*try {
-            photoList.setItems(data.listPhotos(data.getUser(), inAlbum));;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("made it here");
-            System.out.println(e.getMessage());
-        }*/
-
-
-        /*try {
-            BufferedImage bImage = ImageIO.read(new File("src/resources/views/bk pic.jpg"));
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ImageIO.write(bImage, "jpg", bos);
-            byte[] d = bos.toByteArray();   // gets sent to the database
-
-            BufferedImage img = ImageIO.read(new ByteArrayInputStream(d));  // here d is retrieved from the data base
-            ImageView iv = new ImageView();
-            ImageView v = new ImageView();
-
-            System.out.println(img.getHeight());
-            System.out.println(img.getWidth());
-
-            ObservableList<ImageView> b = FXCollections.observableArrayList();
-
-            iv.setImage(SwingFXUtils.toFXImage(img, null));
-            v.setImage(SwingFXUtils.toFXImage(img, null));
-            iv.setFitHeight(50);
-            iv.setFitWidth(50);
-            v.setFitWidth(50);
-            v.setFitHeight(50);
-           // v.setId(); // set an ID so that when cell is clicked we get the child (image view) then display captions, tags
-            b.add(iv);
-            b.add(v);
-
-            photoList.setItems(b);
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }*/
     }
 
-    public void testClick(MouseEvent mouseEvent) throws FileNotFoundException {
+    public void goToDisplay(MouseEvent mouseEvent) throws FileNotFoundException {
         System.out.println(photoList.getSelectionModel().getSelectedIndex());
         System.out.println(photoList.getItems().get(0));
+
+        ObservableList<ImageView> observablePhotos = FXCollections.observableArrayList();
+        observablePhotos = photoList.getItems();
+
+        int index = photoList.getSelectionModel().getSelectedIndex();
 
         if (toggleDelete.isSelected()) {
             // delete the selected photo
@@ -100,6 +63,27 @@ public class photosInAlbumController implements Initializable {
             toggleDelete.setSelected(false);
         } else {
             // go to the image display of that folder
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/imageDisplay.fxml"));
+
+                Parent displayRoot = loader.load();
+
+                Scene photos = new Scene(displayRoot);
+                imageDisplayController init = loader.getController();
+                init.setIndex(index);
+                init.setObservable(observablePhotos);
+                init.chosenAlbum(inAlbum);
+                init.test();
+
+                Stage display = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+                display.setScene(photos);
+                display.show();
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
         }
     }
 
@@ -118,12 +102,6 @@ public class photosInAlbumController implements Initializable {
             byte[] d = bos.toByteArray();   // gets sent to the database
             data.addPictureByteArray(data.getUser(), inAlbum, d);
 
-            /*Parent reloadRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/photosInAlbum.fxml")));
-            Scene photos = new Scene(reloadRoot);
-
-            Stage photoList = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-            photoList.setScene(photos);
-            photoList.show();*/
             photoList.setItems(data.listPhotos(data.getUser(), inAlbum));
 
         } else if (f.length > 0 && fd.getFiles()[0].getAbsolutePath().endsWith("jpg")) {
@@ -137,12 +115,6 @@ public class photosInAlbumController implements Initializable {
             byte[] d = bos.toByteArray();   // gets sent to the database
             data.addPictureByteArray(data.getUser(), inAlbum, d);
 
-            /*Parent reloadRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/photosInAlbum.fxml")));
-            Scene photos = new Scene(reloadRoot);
-
-            Stage photoList = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-            photoList.setScene(photos);
-            photoList.show();*/
             photoList.setItems(data.listPhotos(data.getUser(), inAlbum));
         }
     }

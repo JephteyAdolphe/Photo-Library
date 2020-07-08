@@ -170,6 +170,37 @@ public class dataCenter {
         }
     }
 
+    // Retrieves selected photo to display for user
+
+    public ImageView getSelectedPhoto(String libraryUser, String albumName, int id) {
+        String sql = String.format("select * from %s.%s", libraryUser, albumName);
+
+        try (Connection conn = connect()) {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+
+            int counter = 1;
+
+            while (rs.next()) {
+
+                if (counter == id) {
+                    BufferedImage img = ImageIO.read(new ByteArrayInputStream(rs.getBytes(2)));
+                    ImageView iv = new ImageView();
+                    iv.setImage(SwingFXUtils.toFXImage(img, null));
+                    iv.setFitHeight(50);
+                    iv.setFitWidth(50);
+                    return iv;
+                }
+                counter += 1;
+
+            } return null;
+
+        } catch (SQLException | IOException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
     // Inserts byte array into album table
 
     public void addPictureByteArray(String libraryUser, String albumName, byte[] bytea) {
