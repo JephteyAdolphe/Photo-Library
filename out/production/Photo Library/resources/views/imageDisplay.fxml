@@ -6,23 +6,36 @@
 
 <AnchorPane fx:id="backDrop" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jFiles.Controllers.imageDisplayController">
    <children>
-      <Label layoutX="74.0" layoutY="322.0" text="Caption:">
+      <Label layoutX="82.0" layoutY="322.0" text="Caption:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="94.0" layoutY="347.0" text="Tag:">
+      <Label layoutX="98.0" layoutY="347.0" text="Tag:">
           <font>
               <Font name="System Bold" size="12.0" />
           </font>
       </Label>
-      <Label fx:id="caption" layoutX="161.0" layoutY="322.0" text="Label" />
-      <Label fx:id="tag" layoutX="161.0" layoutY="347.0" text="Label" />
-      <Label layoutX="72.0" layoutY="369.0" text="Location:">
+      <Label fx:id="caption" layoutX="161.0" layoutY="322.0"  />
+      <Label fx:id="tag" layoutX="161.0" layoutY="347.0"  />
+      <Label layoutX="80.0" layoutY="369.0" text="Location:">
           <font>
               <Font name="System Bold" size="12.0" />
           </font>
        </Label>
-      <Label fx:id="location" layoutX="161.0" layoutY="369.0" text="Label" />
+      <Label fx:id="location" layoutX="161.0" layoutY="369.0" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goBack" text="&lt;--" />
+      <Button fx:id="captionButton" layoutX="14.0" layoutY="318.0" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#addCaption" prefHeight="20.0" text="Add / Edit">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+       <Button fx:id="tagButton" layoutX="14.0" layoutY="343.0" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#addTag" prefHeight="20.0" text="Add / Edit">
+           <font>
+               <Font size="10.0" />
+           </font></Button>
+       <Button fx:id="locationButton" layoutX="14.0" layoutY="365.0" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#addLocation" prefHeight="20.0" text="Add / Edit">
+           <font>
+               <Font size="10.0" />
+           </font></Button>
    </children>
 </AnchorPane>

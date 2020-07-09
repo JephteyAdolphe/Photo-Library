@@ -174,6 +174,7 @@ public class dataCenter {
 
     public ImageView getSelectedPhoto(String libraryUser, String albumName, int id) {
         String sql = String.format("select * from %s.%s", libraryUser, albumName);
+        id += 1;
 
         try (Connection conn = connect()) {
             Statement statement = conn.createStatement();
@@ -198,6 +199,111 @@ public class dataCenter {
         } catch (SQLException | IOException e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+
+    public String getCaption(String libraryUser, String albumName, int id) {
+        String sql = String.format("select * from %s.%s", libraryUser, albumName);
+        id += 1;
+
+        try (Connection conn = connect()) {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+
+            int counter = 1;
+
+            while (rs.next()) {
+                if (counter == id) {
+                    return rs.getString(3);
+                }
+                counter += 1;
+            } return null;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public String getTag(String libraryUser, String albumName, int id) {
+        String sql = String.format("select * from %s.%s", libraryUser, albumName);
+        id += 1;
+
+        try (Connection conn = connect()) {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+
+            int counter = 1;
+
+            while (rs.next()) {
+                if (counter == id) {
+                    return rs.getString(4);
+                }
+                counter += 1;
+            } return null;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public String getLocation(String libraryUser, String albumName, int id) {
+        String sql = String.format("select * from %s.%s", libraryUser, albumName);
+        id += 1;
+
+        try (Connection conn = connect()) {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+
+            int counter = 1;
+
+            while (rs.next()) {
+                if (counter == id) {
+                    return rs.getString(5);
+                }
+                counter += 1;
+            } return null;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public void setCaption(String libraryUser, String albumName, String cap, int id) {
+        id += 1;
+        String sql = String.format("update only %s.%s set caption = '%s' where id = %d", libraryUser, albumName, cap, id);
+
+        try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
+            psmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void setTag(String libraryUser, String albumName, String tag, int id) {
+        id += 1;
+        String sql = String.format("update only %s.%s set tag = '%s' where id = %d", libraryUser, albumName, tag, id);
+
+        try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
+            psmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void setLocation(String libraryUser, String albumName, String location, int id) {
+        id += 1;
+        String sql = String.format("update only %s.%s set loc = '%s' where id = %d", libraryUser, albumName, location, id);
+
+        try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
+            psmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 

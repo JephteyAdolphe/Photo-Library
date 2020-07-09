@@ -49,9 +49,6 @@ public class photosInAlbumController implements Initializable {
     }
 
     public void goToDisplay(MouseEvent mouseEvent) throws FileNotFoundException {
-        System.out.println(photoList.getSelectionModel().getSelectedIndex());
-        System.out.println(photoList.getItems().get(0));
-
         ObservableList<ImageView> observablePhotos = FXCollections.observableArrayList();
         observablePhotos = photoList.getItems();
 
@@ -72,9 +69,8 @@ public class photosInAlbumController implements Initializable {
                 Scene photos = new Scene(displayRoot);
                 imageDisplayController init = loader.getController();
                 init.setIndex(index);
-                init.setObservable(observablePhotos);
                 init.chosenAlbum(inAlbum);
-                init.test();
+                init.load();
 
                 Stage display = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
                 display.setScene(photos);
@@ -92,7 +88,6 @@ public class photosInAlbumController implements Initializable {
         fd.setVisible(true);
         File[] f = fd.getFiles();
         if (f.length > 0 && fd.getFiles()[0].getAbsolutePath().endsWith("png")) {
-            System.out.println(fd.getFiles()[0].getAbsolutePath());
 
             File incomingImg = new File(fd.getFiles()[0].getAbsolutePath());
             BufferedImage bImage = ImageIO.read(incomingImg);
@@ -105,7 +100,6 @@ public class photosInAlbumController implements Initializable {
             photoList.setItems(data.listPhotos(data.getUser(), inAlbum));
 
         } else if (f.length > 0 && fd.getFiles()[0].getAbsolutePath().endsWith("jpg")) {
-            System.out.println(fd.getFiles()[0].getAbsolutePath());
 
             File incomingImg = new File(fd.getFiles()[0].getAbsolutePath());
             BufferedImage bImage = ImageIO.read(incomingImg);
