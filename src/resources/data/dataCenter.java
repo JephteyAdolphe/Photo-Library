@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class dataCenter {
     private final String url = "jdbc:postgresql://localhost:5432/photos";
     private final String user = "postgres";
-    private final String password = "NorthBrunswick1685!";          // Remember to delete this when uploading to github
+    private final String password = "";  
 
     private File file = new File("src/resources/data/currentUser.txt");     // contains name of the user that is signed in
 
