@@ -324,10 +324,13 @@ public class dataCenter {
     // Delete selected picture
 
     public void deletePicture(String libraryUser, String albumName, int row) {
-        String sql = String.format("delete from %s.%s where %s.%s.id = %d", libraryUser, albumName, libraryUser, albumName, row + 1);
+        String sql = String.format("delete from %s.%s where id = %d", libraryUser, albumName, row + 1);
+        String sql2 = String.format("update %s.%s set id = default", libraryUser, albumName);
 
         try (Connection conn = connect(); PreparedStatement psmt = conn.prepareStatement(sql)) {
+            PreparedStatement psmt2 = conn.prepareStatement(sql2);
             psmt.executeUpdate();
+            psmt2.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
