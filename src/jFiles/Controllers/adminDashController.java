@@ -63,15 +63,14 @@ public class adminDashController implements Initializable {
         userList.getStylesheets().add("resources/views/lihst_vue.css");
         userList.getStyleClass().add("list-cell");
         userList.setItems(data.listUsers());
+    }
 
-        // Use this to clear the logged in user every time someone signs in
-        // by doing this we can use the user from the text file in something like
-        // create table when we do 'user'.'name of table'
+    public void signOut(MouseEvent mouseEvent) throws IOException {
+        Parent signRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/signIn.fxml")));
+        Scene signIn = new Scene(signRoot);
 
-        /*try {
-            data.clear();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
+        Stage signInPrompt = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        signInPrompt.setScene(signIn);
+        signInPrompt.show();
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="174.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="jFiles.Controllers.signInController">
+    <TextField fx:id="signInField" layoutX="68.0" layoutY="75.0"/>
+    <Button layoutX="116.0" layoutY="117.0" mnemonicParsing="false" onMouseClicked="#signIn" text="Sign In"/>
+</AnchorPane>

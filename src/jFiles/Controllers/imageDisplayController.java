@@ -15,9 +15,7 @@ import javafx.stage.Stage;
 import resources.data.dataCenter;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class imageDisplayController implements Initializable {
@@ -79,7 +77,7 @@ public class imageDisplayController implements Initializable {
         }
     }
 
-    public void addCaption(MouseEvent mouseEvent) throws IOException {
+    public void addCaption(MouseEvent mouseEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/capPrompt.fxml"));
 
@@ -100,7 +98,7 @@ public class imageDisplayController implements Initializable {
         }
     }
 
-    public void addTag(MouseEvent mouseEvent) throws IOException {
+    public void addTag(MouseEvent mouseEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/tagPrompt.fxml"));
 
@@ -121,7 +119,7 @@ public class imageDisplayController implements Initializable {
         }
     }
 
-    public void addLocation(MouseEvent mouseEvent) throws IOException {
+    public void addLocation(MouseEvent mouseEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/views/locPrompt.fxml"));
 

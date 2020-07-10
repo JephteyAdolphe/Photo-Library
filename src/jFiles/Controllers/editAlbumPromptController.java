@@ -16,7 +16,7 @@ public class editAlbumPromptController {
     public TextField oldName;
     public TextField newName;
 
-    dataCenter data = new dataCenter();
+    private dataCenter data = new dataCenter();
 
     // Confirms the edit of an album's name
 

@@ -10,8 +10,9 @@
           <Font name="Arial Bold" size="24.0" />
         </font>
     </Label>
-    <Button fx:id="addButton" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#addAlbum" text="+" />
+    <Button fx:id="addButton" layoutX="140.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#addAlbum" text="+" />
     <ListView fx:id="albumList" layoutY="100.0" onMouseClicked="#goToPhotos" prefHeight="304.0" prefWidth="600.0" />
     <Button layoutX="479.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#delete" text="Delete An Album" />
    <Button layoutX="245.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#editAlbumName" text="Edit Album Name" />
+   <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#signOut" text="Sign Out" />
 </AnchorPane>

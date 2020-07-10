@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class albumAddPromptController {
     public TextField albumName;
-    dataCenter data = new dataCenter();
+    private dataCenter data = new dataCenter();
 
     public void addAlbum(MouseEvent mouseEvent) {
         try {

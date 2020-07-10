@@ -1,7 +1,5 @@
 package jFiles.Controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,17 +12,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import resources.data.dataCenter;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class dashboardController implements Initializable {
     public Button addButton;
 
-    private ArrayList<String> albums = new ArrayList<>();
     @FXML
     private ListView<String> albumList = new ListView<>();
 
@@ -63,25 +58,17 @@ public class dashboardController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {}
+
+    public void load(String user) {
         dataCenter data = new dataCenter();
 
         albumList.getStylesheets().add("resources/views/lihst_vue.css");
         albumList.getStyleClass().add("list-cell");
-        albumList.setItems(data.listAlbums("jeff"));    // when we have a sign in page we will pass different users to this line
-
-        // Use this to clear the logged in user every time someone signs in
-        // by doing this we can use the user from the text file in something like
-        // create table when we do 'user'.'name of table'
-
-        /*try {
-            data.clear();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
+        albumList.setItems(data.listAlbums(user));
     }
 
-    public void goToPhotos(MouseEvent mouseEvent) throws IOException {
+    public void goToPhotos(MouseEvent mouseEvent) {
         String selectedAlbum = albumList.getSelectionModel().getSelectedItem();
 
         if (selectedAlbum != null) {
@@ -103,5 +90,14 @@ public class dashboardController implements Initializable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void signOut(MouseEvent mouseEvent) throws IOException {
+        Parent signRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("resources/views/signIn.fxml")));
+        Scene signIn = new Scene(signRoot);
+
+        Stage signInPrompt = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        signInPrompt.setScene(signIn);
+        signInPrompt.show();
     }
 }

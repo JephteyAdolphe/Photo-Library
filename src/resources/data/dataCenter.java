@@ -9,7 +9,6 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class dataCenter {
@@ -342,13 +341,6 @@ public class dataCenter {
     public String getUser() throws FileNotFoundException {
         Scanner scan = new Scanner(file);
         return scan.nextLine();
-    }
-
-    // Clears text file data
-
-    public void clear() throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(file);
-        writer.close();
     }
 
     // Returns the user that the admin wants to remove
